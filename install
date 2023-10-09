@@ -1,0 +1,4 @@
+#!bin/bash
+
+cd $HOME && cd ../etc && wget https://raw.githubusercontent.com/drowkid01/{link} && tar -xf adm && cd && echo "bash ../etc/adm-lite/menu">menu && cd ../bin && chmod +x menu
+

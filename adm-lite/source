@@ -1,0 +1,149 @@
+#!bin/bash
+negro="\e[1;30m" && azul="\e[1;34m" && verde="\e[1;32m" && cian="\e[1;36m" && rojo="\e[1;31m" && purpura="\e[1;35m" && amarillo="\e[1;33m" && blanco="\e[1;37m"
+msg () {
+local colors="/etc/new-adm-color"
+if [[ ! -e $colors ]]; then
+COLOR[0]='\033[1;37m' #BRAN='\033[1;37m'
+COLOR[1]='\e[31m' #VERMELHO='\e[31m'
+COLOR[2]='\e[32m' #VERDE='\e[32m'
+COLOR[3]='\e[33m' #AMARELO='\e[33m'
+COLOR[4]='\e[34m' #AZUL='\e[34m'
+COLOR[5]='\e[35m' #MAGENTA='\e[35m'
+COLOR[6]='\033[1;97m' #MAG='\033[1;36m'
+COLOR[7]='\033[1;49;95m'
+COLOR[8]='\033[1;49;96m'
+else
+local COL=0
+for number in $(cat $colors); do
+case $number in
+1)COLOR[$COL]='\033[1;37m';;
+2)COLOR[$COL]='\e[31m';;
+3)COLOR[$COL]='\e[32m';;
+4)COLOR[$COL]='\e[33m';;
+5)COLOR[$COL]='\e[34m';;
+6)COLOR[$COL]='\e[35m';;
+7)COLOR[$COL]='\033[1;36m';;
+8)COLOR[$COL]='\033[1;49;95m';;
+9)COLOR[$COL]='\033[1;49;96m';;
+esac
+let COL++
+done
+fi
+NEGRITO='\e[1m'
+SEMCOR='\e[0m'
+ case $1 in
+  -ne)cor="${COLOR[1]}${NEGRITO}" && echo -ne "${cor}${2}${SEMCOR}";;
+  -ama)cor="${COLOR[3]}${NEGRITO}" && echo -e "${cor}${2}${SEMCOR}";;
+  -verm)cor="${COLOR[3]}${NEGRITO}[!] ${COLOR[1]}" && echo -e "${cor}${2}${SEMCOR}";;
+  -verm2)cor="${COLOR[1]}${NEGRITO}" && echo -e "${cor}${2}${SEMCOR}";;
+  -aqua)cor="${COLOR[8]}${NEGRITO}" && echo -e "${cor}${2}${SEMCOR}";;
+  -azu)cor="${COLOR[6]}${NEGRITO}" && echo -e "${cor}${2}${SEMCOR}";;
+  -verd)cor="${COLOR[2]}${NEGRITO}" && echo -e "${cor}${2}${SEMCOR}";;                                                
+  -bra)cor="${COLOR[0]}${SEMCOR}" && echo -e "${cor}${2}${SEMCOR}";;
+  -nazu) cor="${COLOR[6]}${NEGRITO}" && echo -ne "${cor}${2}${SEMCOR}";;
+  -nverd)cor="${COLOR[2]}${NEGRITO}" && echo -ne "${cor}${2}${SEMCOR}";;
+  -nama) cor="${COLOR[3]}${NEGRITO}" && echo -ne "${cor}${2}${SEMCOR}";;
+  -verm3)cor="${COLOR[1]}" && echo -e "${cor}${2}${SEMCOR}";;
+  -teal) cor="${COLOR[7]}${NEGRITO}" && echo -e "${cor}${2}${SEMCOR}";;
+  -teal2)cor="${COLOR[7]}" && echo -e "${cor}${2}${SEMCOR}";;
+  -blak) cor="${COLOR[8]}${NEGRITO}" && echo -e "${cor}${2}${SEMCOR}";;
+  -blak2)cor="${COLOR[8]}" && echo -e "${cor}${2}${SEMCOR}";;
+  -blu)  cor="${COLOR[9]}${NEGRITO}" && echo -e "${cor}${2}${SEMCOR}";;
+  -blu1) cor="${COLOR[9]}" && echo -e "${cor}${2}${SEMCOR}";;
+  #-bar)ccor="${COLOR[1]}•••••••••••••••••••••••••••••••••••••••••••••••••" && echo -e "${SEMCOR}${ccor}${SEMCOR}";;
+  -bar)ccor="${COLOR[1]}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" && echo -e "${SEMCOR}${ccor}${SEMCOR}";;
+  -bar1)ccor="${COLOR[1]}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" && echo -e "${SEMCOR}${ccor}${SEMCOR}";;
+  -bar2)ccor="${COLOR[1]}=====================================================" && echo -e "${SEMCOR}${ccor}${SEMCOR}";;
+  -bar3)ccor="${COLOR[3]}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" && echo -e "${SEMCOR}${ccor}${SEMCOR}";;
+  -bar4)ccor="${COLOR[5]}•••••••••••••••••••••••••••••••••••••••••••••••••" && echo -e "${SEMCOR}${ccor}${SEMCOR}";;
+  -br)ccor="━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" && echo -e "${ccor}";;
+   esac
+}
+barra_i() {
+comando="$1"
+in=' ['
+en=' ] '
+full_in="➛"
+full_en='100%'
+bar=(────────────────────
+═───────────────────
+▇═──────────────────
+▇▇═─────────────────
+═▇▇═────────────────
+─═▇▇═───────────────
+──═▇▇═──────────────
+───═▇▇═─────────────
+────═▇▇═────────────
+─────═▇▇═───────────
+──────═▇▇═──────────
+───────═▇▇═─────────
+────────═▇▇═────────
+─────────═▇▇═───────
+──────────═▇▇═──────
+───────────═▇▇═─────
+────────────═▇▇═────
+─────────────═▇▇═───
+──────────────═▇▇═──
+───────────────═▇▇═─
+────────────────═▇▇═
+─────────────────═▇▇
+──────────────────═▇
+───────────────────═
+──────────────────═▇
+─────────────────═▇▇
+────────────────═▇▇═
+───────────────═▇▇═─
+──────────────═▇▇═──
+─────────────═▇▇═───
+────────────═▇▇═────
+───────────═▇▇═─────
+──────────═▇▇═──────
+─────────═▇▇═───────
+────────═▇▇═────────
+───────═▇▇═─────────
+──────═▇▇═──────────
+─────═▇▇═───────────
+────═▇▇═────────────
+───═▇▇═─────────────
+──═▇▇═──────────────
+─═▇▇═───────────────
+═▇▇═────────────────
+▇▇═─────────────────
+▇═──────────────────
+═───────────────────
+────────────────────);
+#==color==
+in="\033[1;33m$in\033[0m"
+en="\033[1;33m$en\033[0m"
+full_in="\033[1;31m$full_in"
+full_en="\033[1;32m$full_en\033[0m"
+v="\033[1;32m"
+
+
+ _=$(
+$comando > /dev/null 2>&1
+) & > /dev/null
+pid=$!
+while [[ -d /proc/$pid ]]; do
+        for i in "${bar[@]}"; do
+                echo -ne "\r $in"
+                echo -ne "${v}INSTALANDO $en $in \033[1;31m$i"
+                echo -ne " $en"
+                sleep 0.2
+        done
+done
+echo -e " $full_in $full_en"
+sleep 0.1s
+}
+owner="${verde}＠${cian}ｄ${amarillo}ｒ${azul}ｏ${rojo}ｗ${purpura}ｋ${verde}ｉ${cian}ｄ${amarillo}０${rojo}1"
+tits(){
+echo -e "
+${rojo}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+${amarillo}	┏━┓┏━┓┏━┓┏━╸┏━╸   ┏┓╻┏━╸╺┳╸╻ ╻┏━┓┏━┓╻┏ 
+${purpura}	┗━┓┣━┛┣━┫┃  ┣╸ ╺━╸┃┗┫┣╸  ┃ ┃╻┃┃ ┃┣┳┛┣┻┓
+${azul}	┗━┛╹  ╹ ╹┗━╸┗━╸   ╹ ╹┗━╸ ╹ ┗┻┛┗━┛╹┗╸╹ ╹
+${rojo}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+		${verde}＠${cian}ｄ${amarillo}ｒ${azul}ｏ${rojo}ｗ${purpura}ｋ${verde}ｉ${cian}ｄ${amarillo}０${rojo}1
+${rojo}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+}
+
